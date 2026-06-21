@@ -1,0 +1,341 @@
+/* --- CONFIGURATION GÃ‰NÃ‰RALE --- */
+:root {
+    --font-main: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    --transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --card-ratio: 2 / 3;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body { 
+    font-family: var(--font-main); 
+    background: var(--bg-color); 
+    color: var(--text-color);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* --- NAVIGATION & LOGOS FIXES --- */
+.main-header {
+    position: fixed !important;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+}
+
+.main-logo {
+    width: 140px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.main-logo:hover { transform: scale(1.05); }
+
+.top-nav-right {
+    position: fixed !important;
+    top: 25px;
+    right: 5%;
+    display: flex;
+    gap: 20px;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 10px 20px;
+    border-radius: 40px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.nav-sub-item {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.nav-sub-item:hover { opacity: 0.5; }
+
+/* --- SECTION ACCUEIL --- */
+.accueil-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5vh 0 40px 8%;
+}
+
+.img-hero { 
+    width: 70%;
+    max-width: 900px;
+    height: auto;
+    object-fit: contain;
+}
+
+.menu-central {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: -20px;
+}
+
+.icon-only {
+    width: 120px;
+    height: auto;
+    transition: var(--transition);
+}
+
+.menu-item:hover { transform: scale(1.1) translateY(-10px); }
+
+/* --- LAYOUT DES PAGES --- */
+.page { display: none; padding-bottom: 100px; }
+.page.active { display: block; animation: fadeIn 0.6s ease-out; }
+
+.tarot-layout { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 140px 40px 60px 40px; 
+}
+
+.page-title { 
+    text-align: center; 
+    letter-spacing: 8px; 
+    text-transform: uppercase; 
+    margin-bottom: 60px; 
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+/* --- GRILLES DE CARTES --- */
+.suite-title {
+    width: 100%;
+    text-align: center;
+    margin: 80px 0 40px 0;
+    font-size: 1.4rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.cards-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 35px; 
+    justify-items: center;
+}
+
+#grid-majeurs {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 15px;
+    padding: 20px;
+    width: 100%;
+}
+
+#mineurs .cards-grid { display: block !important; }
+
+.sub-grid-numbers {
+    display: grid !important;
+    grid-template-columns: repeat(10, 1fr) !important;
+    gap: 15px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.sub-grid-honors {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 15px;
+    width: 40%;
+    margin: 0 auto 60px auto;
+}
+
+.sub-grid-numbers .card-wrapper { max-width: 110px; }
+
+/* --- GRILLE GRAPHIQUE POUR LA NUMÃ‰ROLOGIE --- */
+.num-symbols-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.master-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.num-symbol-block {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.num-symbol-block:hover {
+    transform: translateY(-5px);
+    border-color: #000;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.master-block {
+    border: 1px double #000;
+    background: #fafafa;
+}
+
+.num-digit {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 10px;
+    font-family: serif;
+    letter-spacing: -2px;
+}
+
+.num-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.num-sub-label {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- MODULE DE TIRAGE --- */
+#tirage-container {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 40px;
+    width: 100%;
+    margin: 40px auto 20px auto;
+}
+
+#tirage-container .card-wrapper { width: 180px; flex: 0 0 auto; }
+
+.interpretation-grid {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px;
+    max-width: 100%;
+}
+
+.interpretation-item {
+    width: 160px;
+    text-align: center;
+    font-family: serif;
+    font-size: 0.9em;
+}
+
+/* --- CARDS WRAPPER & FLIP --- */
+.card-wrapper { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    max-width: 160px;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.card-wrapper:hover { transform: translateY(-5px); z-index: 10; }
+.card-wrapper:hover .card-inner { box-shadow: 0 0 20px rgba(0,0,0,0.2); cursor: pointer; }
+
+.card { width: 100%; aspect-ratio: var(--card-ratio); position: relative; perspective: 1000px; }
+.card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+.card.flipped .card-inner { transform: rotateY(180deg); }
+
+.card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; border: 1px solid #e0e0e0; background: #fff; }
+.card-front img { width: 100%; height: 100%; object-fit: cover; }
+.card-back { transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; padding: 20px; }
+
+.card-caption { font-size: 9px; text-transform: uppercase; margin-top: 15px; text-align: center; letter-spacing: 1px; font-weight: bold; }
+
+.numerology-header { display: grid; grid-template-columns: repeat(10, 1fr); gap: 15px; margin-bottom: 10px; text-align: center; }
+.num-info { font-weight: bold; font-size: 1.2rem; color: #666; padding: 5px; border-bottom: 2px solid #eee; cursor: help; }
+.num-info:hover { color: #000; border-bottom-color: #000; }
+
+/* --- A PROPOS & CONTACT --- */
+.bio-container { max-width: 800px; margin: 0 auto; }
+.manifeste-box { border-left: 4px solid #000; padding-left: 20px; margin-bottom: 40px; font-style: italic; font-size: 1.3rem; }
+.bio-text p { margin-bottom: 20px; }
+.contact-container { max-width: 600px; margin: 0 auto; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+
+/* --- QUIZ & BOUTONS --- */
+.quiz-box { max-width: 700px; margin: 0 auto; }
+.quiz-item { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+.quiz-item label { display: block; margin: 8px 0; cursor: pointer; }
+.btn-tirage { display: block; margin: 40px auto; padding: 15px 40px; background: #000; color: #fff; border: none; border-radius: 50px; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; }
+
+/* --- FENÃŠTRE MODALE PARTAGÃ‰E --- */
+.modal {
+    position: fixed; z-index: 10005; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(255, 255, 255, 0.95); display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(5px); animation: fadeIn 0.3s ease-out;
+}
+.modal-content { background-color: #fff; padding: 40px; border: 1px solid #e0e0e0; width: 90%; max-width: 700px; position: relative; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.close-modal { position: absolute; right: 25px; top: 15px; font-size: 2rem; cursor: pointer; }
+.modal-body { display: flex; gap: 40px; align-items: center; }
+.modal-image-container { flex: 0 0 40%; max-width: 200px; }
+.modal-image-container img { width: 100%; height: auto; border-radius: 8px; }
+.modal-text-container { flex: 1; }
+#modal-card-title { text-transform: uppercase; letter-spacing: 3px; font-size: 1.5rem; margin-bottom: 5px; }
+#modal-card-keyword { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: #666; margin-bottom: 20px; font-weight: bold; }
+#modal-card-description { font-family: serif; font-size: 1.05rem; line-height: 1.6; color: #333; }
+
+/* --- RESPONSIVE --- */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 900px) {
+    .num-symbols-grid { grid-template-columns: repeat(2, 1fr); }
+    .master-grid { grid-template-columns: 1fr; }
+    #grid-majeurs { grid-template-columns: repeat(3, 1fr) !important; }
+}
+@media (max-width: 600px) {
+    .modal-body { flex-direction: column; text-align: center; }
+}
+/* --- RESPONSIVE Ã‰TENDU --- */
+@media (max-width: 768px) {
+    .tarot-layout { padding: 100px 20px 60px 20px; }
+    .img-hero { width: 90%; }
+    .menu-central { gap: 15px; }
+    .icon-only { width: 85px; }
+    .top-nav-right { top: 10px; right: 2%; gap: 10px; padding: 8px 14px; }
+    .sub-grid-numbers { grid-template-columns: repeat(5, 1fr) !important; }
+    .sub-grid-honors { grid-template-columns: repeat(4, 1fr) !important; width: 100%; }
+    .numerology-header { grid-template-columns: repeat(5, 1fr); }
+    #tirage-container { gap: 15px; }
+    #tirage-container .card-wrapper { width: 100px; }
+    .interpretation-grid { flex-direction: column; align-items: center; }
+    .interpretation-item { width: 100%; max-width: 300px; }
+}
+
+@media (max-width: 480px) {
+    #grid-majeurs { grid-template-columns: repeat(2, 1fr) !important; }
+    .sub-grid-numbers { grid-template-columns: repeat(4, 1fr) !important; }
+    .sub-grid-numbers .card-wrapper { max-width: 80px; }
+    .page-title { font-size: 1.3rem; letter-spacing: 4px; }
+    .nav-sub-item { font-size: 8px; letter-spacing: 1px; }
+    .main-logo { width: 100px; }
+    .accueil-container { padding: 8vh 0 40px 5%; }
+    .modal-content { padding: 25px; }
+}
